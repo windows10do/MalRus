@@ -21,7 +21,7 @@ Currently supported versions:
 
 To report a vulnerability:
 
-1. Email the maintainer at **security@yourdomain.com** (replace with your actual contact).
+1. Email the maintainer at **samanrayantv@gmail.com**.
 2. Include:
    - A description of the vulnerability
    - Steps to reproduce
