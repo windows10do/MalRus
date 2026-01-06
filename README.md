@@ -1,37 +1,26 @@
 # MalRus Antivirus for Termux
 
 MalRus is a lightweight, Bash-based antivirus-style scanner designed for Android (via Termux).  
-It scans common storage locations, flags suspicious files, quarantines them safely, and provides an interactive UI using the dialog package.
+It scans common storage locations, flags suspicious files, quarantines them safely, and provides an interactive UI using the `dialog` package.
 
 ---
 
 ## Features
 
 - Suspicious file detection  
-  Flags files with risky extensions like `.exe`, `.scr`, `.bat`, `.sh`, `.bash`, `.tmp`, `.bin` or known bad hashes (EICAR test file included).
-
-- Interactive UI  
-  Uses Termux’s dialog package for menus, checklists, and message boxes.
-
-- Virus Lab  
-  Quarantines flagged files by renaming them to `do_not_run_nnn.ext` and moving them into `~/malrus_quarantine`.
-
-- Full Scan  
-  Crawls `/storage/emulated/0/`, `/sdcard/` (if present), `/storage/usb/` (if present), and `$HOME`.  
-  Includes a checklist mode to select sources (SD card, USB, contacts, or all).
-
-- Contacts Scan  
-  Integrates with Termux’s content provider to detect suspicious contacts (e.g., names containing `spam`).
-
-- Logging  
-  All actions are logged with timestamps in `~/malrus_logs/scan.log`.
-
-- Quarantine Management  
-  View quarantined files directly from the menu.
+- Interactive UI with `dialog`  
+- Virus Lab quarantine system  
+- Full Scan with checklist (SD card, USB, contacts, all)  
+- Contacts scan via Termux `content` provider  
+- Logging system with timestamps  
+- Quarantine management  
 
 ---
 
 ## Installation
+
+[!TIP]
+> Make sure Termux has storage permissions enabled before running MalRus.
 
 1. Install Termux and required packages:  
    `pkg install bash dialog git gh`
@@ -68,6 +57,9 @@ Menu options:
 7. View quarantine folder  
 8. Full Scan Checklist  
 
+[!IMPORTANT]
+> Full scans may take several hours depending on storage size. Run them when your device is idle.
+
 ---
 
 ## Quarantine & Restore
@@ -75,16 +67,34 @@ Menu options:
 - Quarantined files are moved to `~/malrus_quarantine` and renamed `do_not_run_nnn.ext`.  
 - You can inspect them safely or restore manually if needed.
 
+[!WARNING]
+> Restoring quarantined files may re‑introduce malware. Only restore if you are certain the file is safe.
+
 ---
 
 ## Notes
 
-- Contacts scanning requires Termux permissions:  
-  `termux-setup-storage`  
-  `termux-content query contacts`
+[!NOTE]
+> MalRus is experimental and intended for educational use. It is **not** a replacement for a professional antivirus engine.
 
-- Full scans may take several hours depending on storage size.  
-- MalRus is a prototype utility — extend it with more signatures, smarter heuristics, or integration with ClamAV for production use.
+[!CAUTION]
+> Contacts scanning requires Termux permissions. Without them, MalRus cannot access your contacts.
+
+[!EXAMPLE]
+> Example command to run a full scan with checklist:  
+> `bash malrus.sh` → choose option 8 → tick “Do all”
+
+[!SUCCESS]
+> If you see “No suspicious files found” after a scan, your storage is clean.
+
+[!FAILURE]
+> If MalRus cannot access `/storage/usb`, ensure your USB drive is mounted properly.
+
+[!QUESTION]
+> Want to extend MalRus? Add more suspicious file signatures in the `SUSPICIOUS_EXT` array.
+
+[!NOTE]
+> Contributions are welcome — fork the repo and submit pull requests.
 
 ---
 
