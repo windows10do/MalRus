@@ -19,7 +19,8 @@ It scans common storage locations, flags suspicious files, quarantines them safe
 
 ## Installation
 
-[!TIP]
+> [!TIP]
+> 
 > Make sure Termux has storage permissions enabled before running MalRus.
 
 1. Install Termux and required packages:  
@@ -57,7 +58,8 @@ Menu options:
 7. View quarantine folder  
 8. Full Scan Checklist  
 
-[!IMPORTANT]
+> [!IMPORTANT]
+> 
 > Full scans may take several hours depending on storage size. Run them when your device is idle.
 
 ---
@@ -67,33 +69,41 @@ Menu options:
 - Quarantined files are moved to `~/malrus_quarantine` and renamed `do_not_run_nnn.ext`.  
 - You can inspect them safely or restore manually if needed.
 
-[!WARNING]
+> [!CAUTION]
+> 
 > Restoring quarantined files may re‑introduce malware. Only restore if you are certain the file is safe.
 
 ---
 
 ## Notes
 
-[!NOTE]
+> [!NOTE]
+> 
 > MalRus is experimental and intended for educational use. It is **not** a replacement for a professional antivirus engine.
 
-[!CAUTION]
+> [!CAUTION]
+> 
 > Contacts scanning requires Termux permissions. Without them, MalRus cannot access your contacts.
 
-[!EXAMPLE]
+> [!TIP]
+> 
 > Example command to run a full scan with checklist:  
 > `bash malrus.sh` → choose option 8 → tick “Do all”
 
-[!SUCCESS]
+> [!NOTE]
+> 
 > If you see “No suspicious files found” after a scan, your storage is clean.
 
-[!FAILURE]
+> [!WARNING]
+> 
 > If MalRus cannot access `/storage/usb`, ensure your USB drive is mounted properly.
 
-[!QUESTION]
+> [!TIP]
+> 
 > Want to extend MalRus? Add more suspicious file signatures in the `SUSPICIOUS_EXT` array.
 
-[!NOTE]
+> [!NOTE]
+> 
 > Contributions are welcome — fork the repo and submit pull requests.
 
 ---
